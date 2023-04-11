@@ -1,0 +1,29 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "qwer1234",
+    "database": "nyc_data",
+    "host": "localhost",
+    "port": "5432",
+    "dialect": "postgres",
+    "protocol": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "qwer1234",
+    "database": "nyc_data",
+    "host": "localhost",
+    "port": "5432",
+    "dialect": "postgres",
+    "protocol": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "qwer1234",
+    "database": "nyc_data",
+    "host": "localhost",
+    "port": "5432",
+    "dialect": "postgres",
+    "protocol": "postgres"
+  }
+}
