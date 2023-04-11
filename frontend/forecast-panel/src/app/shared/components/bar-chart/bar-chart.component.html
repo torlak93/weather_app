@@ -1,0 +1,10 @@
+<div class="h-100">
+  <div #containerRef class="" style="height: 100%; position: relative; background: #232837be;">
+    <ngx-charts-bar-vertical style="fill: var(--clr-3);" [view]="view" [scheme]="colorScheme" [results]="data"
+      [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [barPadding]="15"
+      (window:resize)="onResize(containerRef.offsetWidth)" (select)="onSelect($event)" (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)">
+    </ngx-charts-bar-vertical>
+  </div>
+</div>

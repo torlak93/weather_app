@@ -1,0 +1,143 @@
+.big-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.preview-image {
+  width: 90%;
+  height: 93%;
+  margin: auto;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  display: block;
+  overflow: auto;
+}
+.backdrop-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--clr-black);
+  opacity: 0.5;
+}
+.downloading {
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  width: 75vw;
+  height: 70vh;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--clr-white);
+  z-index: 9999;
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+}
+.image-container {
+  width: 67vw;
+  position: relative;
+  display: flex;
+  padding-bottom: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin: 12px auto;
+}
+.background-images {
+  width: 84px;
+  height: 63px;
+  margin-right: 10px;
+  cursor: pointer;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.background-main-images {
+  width: 194px;
+  height: 145px;
+  margin-right: 15px;
+  cursor: pointer;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0px 0px 5px 0px;
+  position: relative;
+  max-width: 100%;
+  margin-bottom: 15px;
+  /* margin: auto; */
+}
+.background-main-images::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  transition: all 0.2s ease-out;
+}
+.background-main-images:hover::before {
+  background-color: var(--clr-light-gray);
+  height: 100%;
+}
+
+.close-button {
+  /* background-image: url(../../../../assets/img/cancel.svg); */
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+}
+.close-button:hover,
+.close-button-ex:hover {
+  color: var(--clr-red);
+}
+.edit-bg {
+  box-shadow: -1px 5px 10px 1px var(--clr-black-middle-opacity);
+  background: var(--clr-white);
+  padding: 12px;
+}
+.downloading-add {
+  position: relative;
+  /* top: 30%; */
+  width: auto;
+  height: auto;
+  /* left: 50%;
+  transform: translate(-50%, -30%); */
+  text-align: center;
+  color: var(--clr-white);
+  z-index: 9999;
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+  min-height: calc(100% - 3.5rem);
+  max-width: 500px;
+  margin: 1.75rem auto;
+}
+
+.logo {
+  background: url("/assets/img/catch-logo.svg") no-repeat;
+  width: 40%;
+  height: 38px;
+  background-size: contain;
+}
+.priority {
+  z-index: 2000;
+}
+@media only screen and (max-width: 600px) {
+  .downloading-add {
+    width: 90%;
+  }
+}

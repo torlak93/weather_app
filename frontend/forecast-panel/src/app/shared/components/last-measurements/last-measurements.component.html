@@ -1,0 +1,18 @@
+<div class="card-body d-flex justify-content-between">
+  <p>Date & Time</p>
+  <p>Mean Temp.</p>
+  <p>Wind Speed</p>
+  <p>Mean Press.</p>
+</div>
+<div class="p-2 rides_container">
+  <div class="card mb-2" *ngFor="let measure of measurements">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <p>{{measure.date | date:'dd.MM.yyyy HH:mm'}}</p>
+        <p>{{measure.meantemp}} <sup>o</sup>C</p>
+        <p>{{measure.wind_speed}} km/h</p>
+        <p>{{measure.meanpressure}} Pa</p>
+      </div>
+    </div>
+  </div>
+</div>

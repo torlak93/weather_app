@@ -1,0 +1,8 @@
+<div style="position: relative;" *ngIf="data.length">
+  <p style="font-size: 1.5rem;" class="custom-padding">Today's statistics</p>
+  <div class="card-container">
+    <ngx-charts-number-card [scheme]="colorScheme" [results]="data" [cardColor]="cardColor"
+      (select)="onSelect($event)">
+    </ngx-charts-number-card>
+  </div>
+</div>

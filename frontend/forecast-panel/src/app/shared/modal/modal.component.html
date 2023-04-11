@@ -1,0 +1,12 @@
+<div class="backdrop-bg" (mousedown)="isScrollbarClick($event) && onClose()"></div>
+<div class="backdrop" [ngClass]="{'priority': priority}" (mousedown)="isScrollbarClick($event) && onClose()">
+  <div class="downloading-add" (mousedown)="$event.stopPropagation()">
+    <div class="edit-bg">
+      <div class="d-flex justify-content-between">
+        <div class="logo"></div>
+        <div class="close-button" (mousedown)="onClose()"></div>
+      </div>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

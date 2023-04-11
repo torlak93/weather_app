@@ -1,0 +1,22 @@
+<div class="nav_header">
+  <div class="logo_content">
+    <div class="logo">
+      <img class="w-100" src="../../../../assets/img/logo.png" alt="">
+    </div>
+  </div>
+  <div class="profile_content">
+    <div class="profile d-flex">
+      <div class="profile_details mr-2">
+        <!-- <img src="" alt=""> -->
+        <div class="name_job">
+          <div class="name">{{user?.name}}</div>
+          <div class="job">{{user?.role | titlecase}}</div>
+        </div>
+      </div>
+      <i class='bx orange bx-log-out' (click)="logout()" id="log_out"></i>
+    </div>
+  </div>
+</div>
+<div class="home_content">
+  <router-outlet></router-outlet>
+</div>

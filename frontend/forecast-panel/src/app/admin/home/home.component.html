@@ -1,0 +1,187 @@
+<div class="bg-img"></div>
+
+<div class="container-fluid">
+  <!-- today statistics -->
+  <app-today-statistics [data]="todayStatistics"></app-today-statistics>
+
+  <div class="divider"></div>
+
+  <div class="mb-4">
+    <div class="card_container p-3 d-flex flex-column justify-content-between align-items-center gap-2"
+      style=" position: relative; background: #232837be; overflow: initial;">
+      <div class=" p-3 d-flex flex-lg-row justify-content-between align-items-center gap-2"
+        style=" position: relative; width: 100%">
+
+        <div>
+          <select class="form-control" style="align-self: center;" name="time" [(ngModel)]="time" id="">
+            <option value="1 minutes">1 minute</option>
+            <option value="5 minutes">5 minutes</option>
+            <option value="10 minutes">10 minutes</option>
+            <option value="1 hour">1 hour</option>
+            <option value="5 hours">5 hours</option>
+            <option value="1 day">1 day</option>
+            <option value="10 days">10 days</option>
+          </select>
+        </div>
+
+        <div>
+          <div class="d-flex mb-3">
+            <p class="flex_100">From </p>
+            <!-- <input type="text" class="form-control flex_100" [(ngModel)]="dateFrom" placeholder="MM-DD-YYYY"> -->
+            <input type="text" class="form-control" ngbDatepicker #dFrom="ngbDatepicker" [(ngModel)]="modelFrom"
+              (dateSelect)="onDateFromSelect($event)" />
+            <button class="input-group-text" style="background-color: transparent;" (click)="dFrom.toggle()">
+              <fa-icon [icon]="faCalendar"></fa-icon>
+            </button>
+          </div>
+          <div class="d-flex">
+            <p class="flex_100">To </p>
+            <!-- <input type="text" class="form-control flex_100" name="date" [(ngModel)]="dateTo" placeholder="MM-DD-YYYY"> -->
+            <input type="text" class="form-control" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="modelTo"
+              (dateSelect)="onDateToSelect($event)" />
+            <button class="input-group-text" style="background-color: transparent;" (click)="d.toggle()">
+              <fa-icon [icon]="faCalendar"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div style="align-self: center;" class="d-flex mt-3">
+          <button class="custom_button mr-1" (click)="setDates('today')">Today</button>
+          <button class="custom_button mr-1" (click)="setDates('week')">Last Week</button>
+          <button class="custom_button mr-1" (click)="setDates('month')">Last Month</button>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-self: center;">
+          <div>
+            <div class="d-flex my-2">
+              <div class="choose-window">
+                <label class="switch" for="selectProcessed">
+                  <input type="checkbox" [(ngModel)]="isGapfill" name="selectProcessed" id="selectProcessed">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <label class="checkbox-label m-0 gray-text" for="selectProcessed">Gapfill</label>
+            </div>
+          </div>
+          <button class="custom_button ml-2 ms-2" (click)="getForecast()">SEND</button>
+        </div>
+      </div>
+      <div style="color: #fff; width: 100%; text-align: center;">
+        <p style="margin-bottom: 16px;">Shown data is for: {{getSensorName() | uppercase}}</p>
+        <select name="sensor" id="" class="form-control" [(ngModel)]="sensor" (change)="getForecast()">
+          <option value="">All Sensors</option>
+          <option value="1">East Sensor</option>
+          <option value="2">West Sensor</option>
+          <option value="3">North Sensor</option>
+          <option value="4">South Sensor</option>
+          <option value="global">Global Data</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+
+  <div>
+    <div class="row" style="row-gap: 15px;">
+      <div style="height: 450px;" class="mb-3 col-lg-6 col-md-12">
+        <select class="form-control mb-2" style="align-self: center;" (change)="lineGraph1()" name="measureType1"
+          [(ngModel)]="measureType1" id="">
+          <option value="meantemp">Temperature</option>
+          <option value="wind_speed">Wind Speed</option>
+          <option value="meanpressure">Pressure</option>
+          <option value="humidity">Humidity</option>
+        </select>
+        <p>Average measure per {{time}}</p>
+        <app-line-graph [line]="line1" [view]="view"></app-line-graph>
+      </div>
+      <div style="height: 450px;" class="mb-3 col-lg-6 col-md-12">
+        <select class="form-control mb-2" style="align-self: center;" (change)="lineGraph2()" name="measureType2"
+          [(ngModel)]="measureType2" id="">
+          <option value="meantemp">Temperature</option>
+          <option value="wind_speed">Wind Speed</option>
+          <option value="meanpressure">Pressure</option>
+          <option value="humidity">Humidity</option>
+        </select>
+        <p>Average measure per {{time}} with locf</p>
+        <app-line-graph [line]="line2" [view]="view"></app-line-graph>
+      </div>
+      <div style="height: 450px;" class="mb-3 col-lg-6 col-md-12">
+        <select class="form-control mb-2" style="align-self: center;" (change)="lineGraph3()" name="measureType3"
+          [(ngModel)]="measureType3" id="">
+          <option value="meantemp">Temperature</option>
+          <option value="wind_speed">Wind Speed</option>
+          <option value="meanpressure">Pressure</option>
+          <option value="humidity">Humidity</option>
+        </select>
+        <p>First measure per {{time}}</p>
+        <app-line-graph [line]="line3" [view]="view"></app-line-graph>
+      </div>
+      <div style="height: 450px;" class="mb-3 col-lg-6 col-md-12">
+        <select class="form-control mb-2" style="align-self: center;" (change)="lineGraph4()" name="measureType4"
+          [(ngModel)]="measureType4" id="">
+          <option value="meantemp">Temperature</option>
+          <option value="wind_speed">Wind Speed</option>
+          <option value="meanpressure">Pressure</option>
+          <option value="humidity">Humidity</option>
+        </select>
+        <p>Last measure per {{time}}</p>
+        <app-line-graph [line]="line4" [view]="view"></app-line-graph>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="background: #232837be; position: relative;" class="p-2 mb-4 card_container">
+    <div class="row">
+      <div class="col-lg-6">
+        <app-last-measurements [measurements]="measurements"></app-last-measurements>
+      </div>
+      <div class="col-lg-6">
+        <p class="my-4">Days over/under {{overUnder}} <sup>o</sup>C</p>
+        <div class="d-flex justify-content-between gap-2">
+          <select class="form-control" style="align-self: center;" name="overUnder" [(ngModel)]="overUnder" id="">
+            <option value="30">30 C</option>
+            <option value="35">35 C</option>
+            <option value="40">40 C</option>
+          </select>
+          <select class="form-control ms-2 ml-2" style="align-self: center;" name="year" [(ngModel)]="year" id="">
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2023">2023</option>
+          </select>
+          <button class="custom_button mr-1" (click)="getCountDays()">SEND</button>
+        </div>
+        <app-pie-chart [pie]="countDays"></app-pie-chart>
+      </div>
+    </div>
+  </div>
+
+  <div style="background: #232837be; position: relative;" class="p-2 mb-4 card_container">
+    <select class="form-control mb-2" style="align-self: center;" (change)="minMaxData()" name="measureType"
+      [(ngModel)]="measureType" id="">
+      <option value="meantemp">Temperature</option>
+      <option value="wind_speed">Wind Speed</option>
+      <option value="meanpressure">Pressure</option>
+      <option value="humidity">Humidity</option>
+    </select>
+    <div class="row">
+      <div class="col-lg-12">
+        <p>Maximum Measure</p>
+        <app-bar-chart [data]="maxTemp" [yAxisLabel]="measureType"></app-bar-chart>
+      </div>
+      <div class="col-lg-12">
+        <p>Minimum Measure</p>
+        <app-bar-chart [data]="minTemp" [yAxisLabel]="measureType"></app-bar-chart>
+      </div>
+    </div>
+  </div>
+
+  <div style="width: 100%; height: 20px;"></div>
+</div>
+
+<div *ngIf="isLoading">
+  <div *appSpinner="isLoading; message: 'Please wait...'"></div>
+</div>

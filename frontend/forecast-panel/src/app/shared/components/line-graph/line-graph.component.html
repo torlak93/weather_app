@@ -1,0 +1,8 @@
+<div id="rides" class="card_container" #containerRef style="height: 90%; position: relative; background: #232837be;">
+  <ngx-charts-line-chart
+    style="fill: var(--clr-3); position: absolute; left: 0; top: 50%; transform: translateY(-40%);" [view]="view"
+    [scheme]="colorSchemeLine" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+    [timeline]="timeline" [results]="line" (select)="onSelect($event)" (activate)="onActivate($event)"
+    (deactivate)="onDeactivate($event)" (window:resize)="onResize(containerRef.offsetWidth)">
+  </ngx-charts-line-chart>
+</div>

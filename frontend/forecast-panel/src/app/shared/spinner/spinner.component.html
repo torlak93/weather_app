@@ -1,0 +1,17 @@
+<div class="spinner-container" [ngClass]="{'full_spinner': fullSpiner, 'red-container': redSpiner}">
+  <div class="spinner-content">
+    <div class="spinner-icon-container">
+      <div class="la-line-spin-fade-rotating la-2x spinner-icon" [ngClass]="{'red-spinner': redSpiner }">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div *ngIf="message" class="spinner-message" [ngClass]="{'darker-text': redSpiner}">{{message}}</div>
+  </div>
+</div>
