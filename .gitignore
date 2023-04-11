@@ -10,7 +10,8 @@
 
 # dependencies
 /backend/node_modules
-forecast-panel/node_modules
+/forecast-panel/node_modules
+/simulator/node_modules
 
 # profiling files
 chrome-profiler-events*.json
